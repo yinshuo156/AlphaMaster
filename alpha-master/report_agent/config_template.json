@@ -1,0 +1,11 @@
+{
+  "llm": {
+    "provider": "openai",
+    "model_name": "gpt-4",
+    "api_key": "your_api_key_here",
+    "base_url": "",
+    "temperature": 0.1,
+    "max_tokens": 4000
+  },
+  "description": "LLM配置模板，支持以下提供商：\n  - openai: OpenAI的GPT模型\n  - dashscope: 阿里百炼模型\n  - deepseek: DeepSeek模型"
+}

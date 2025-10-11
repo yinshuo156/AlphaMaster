@@ -1,0 +1,4 @@
+﻿market,original_factors,optimized_factors,selected_factors,original_high_corr_pairs,optimized_high_corr_pairs,best_method,best_sharpe_ratio,best_expected_return,best_volatility
+a_share,25,10,8,27,0,hrp,6.105152835950679,0.610261017925405,0.09995835228429244
+crypto,25,10,8,30,0,hrp,4.741248309128788,0.42088982778674294,0.08877194366225509
+us,25,10,8,27,0,hrp,4.9438370199914,0.4316924502752138,0.08731931261681534

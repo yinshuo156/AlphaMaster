@@ -1,0 +1,17 @@
+# 核心依赖
+langchain==0.1.10
+langchain-openai==0.0.8
+openai==1.10.0
+
+# 多LLM提供商支持
+langchain-community==0.0.26
+
+# 报告导出依赖
+pypandoc==1.13
+markdown==3.5
+
+# PDF生成可选依赖 (需要系统安装对应的PDF引擎)
+# wkhtmltopdf 或 weasyprint 或 LaTeX
+
+# 工具库
+python-dotenv==1.0.0
