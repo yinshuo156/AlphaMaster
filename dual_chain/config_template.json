@@ -1,0 +1,7 @@
+{
+  "data_path": "data/a_share",
+  "pool_dir": "dual_chain/pools",
+  "llm_model": "gpt-4",
+  "iterations": 5,
+  "factors_per_iteration": 5
+}

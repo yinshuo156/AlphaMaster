@@ -1,0 +1,81 @@
+{
+  "factor_summary": {
+    "total_effective_factors": 102
+  },
+  "model_performance": {
+    "params": {
+      "objective": "regression",
+      "metric": "mse",
+      "verbosity": -1,
+      "boosting_type": "gbdt",
+      "num_leaves": 24,
+      "max_depth": 8,
+      "learning_rate": 0.005,
+      "n_estimators": 2000,
+      "reg_alpha": 0.1,
+      "reg_lambda": 0.1,
+      "early_stopping_rounds": 200,
+      "eval_metric": "mse"
+    }
+  },
+  "backtest_results": {
+    "total_return": 10.62851126553675,
+    "annual_return": 0.5367255124220383,
+    "sharpe_ratio": 18.884054283907126,
+    "max_drawdown": 0.005516273375705203,
+    "daily_returns": "[0.00137263 0.00081171 0.00251256 ... 0.00241032 0.00270743 0.00134151]",
+    "params": {
+      "k": 50,
+      "n": 50,
+      "n_stocks": 500,
+      "k_percent": 0.1
+    }
+  },
+  "ic_metrics": {
+    "avg_ic": 0.1555585742936068,
+    "ic_ir": 2.1359849068480234,
+    "avg_rank_ic": 0.20917502299005603,
+    "rank_ic_ir": 1.7102141675283051,
+    "total_ic_calculations": 147502,
+    "total_rank_ic_calculations": 147502,
+    "top_performing_factors": {
+      "reversal_1": {
+        "avg_ic": 0.34700902777849413,
+        "ic_ir": 4.803135495156441,
+        "avg_rank_ic": 0.47432975109166353,
+        "rank_ic_ir": 3.873816654022373,
+        "n_valid_dates": 1459
+      },
+      "AlphaGen_factor_20.py": {
+        "avg_ic": 0.34679337441576,
+        "ic_ir": 4.781467317800807,
+        "avg_rank_ic": 0.47196170311853325,
+        "rank_ic_ir": 3.8611809905422976,
+        "n_valid_dates": 1459
+      },
+      "Comp_Factor_6": {
+        "avg_ic": 0.3466064505700753,
+        "ic_ir": 4.7709054781620095,
+        "avg_rank_ic": 0.4700097996703822,
+        "rank_ic_ir": 3.85353166814189,
+        "n_valid_dates": 1459
+      },
+      "factor_17": {
+        "avg_ic": 0.34657490051400763,
+        "ic_ir": 4.776123154173511,
+        "avg_rank_ic": 0.47179549544286525,
+        "rank_ic_ir": 3.842138516022014,
+        "n_valid_dates": 1459
+      },
+      "volume_ratio_5_20": {
+        "avg_ic": 0.003135641160271091,
+        "ic_ir": 0.022235921215242798,
+        "avg_rank_ic": -0.0011043084825880388,
+        "rank_ic_ir": -0.007748064194765967,
+        "n_valid_dates": 1441
+      }
+    },
+    "factor_count": 102,
+    "positive_factor_count": 9
+  }
+}

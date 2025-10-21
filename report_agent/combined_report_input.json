@@ -1,0 +1,754 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-01T11:17:30.260465",
+    "data_source": "portfolios/selected_factors, portfolios/optimized_factors and portfolios/optimization_reports",
+    "total_markets": 3,
+    "total_factors": 30,
+    "optimization_methods": [
+      "max_sharpe",
+      "min_volatility",
+      "efficient_return",
+      "hrp",
+      "cla"
+    ]
+  },
+  "factor_analysis": {
+    "a_share": {
+      "factor_statistics": {
+        "Agent_MomentumReversal": {
+          "count": 4836,
+          "mean": 0.0,
+          "std": 2.5095789670829327,
+          "min": -6.401723013967534,
+          "max": 8.171049792345565,
+          "range": 14.5727728063131,
+          "cv": Infinity
+        },
+        "GFN_Momentum": {
+          "count": 4836,
+          "mean": -1.616205561075497e-17,
+          "std": 1.5497993825167098,
+          "min": -5.474734631327762,
+          "max": 6.377271188800703,
+          "range": 11.852005820128465,
+          "cv": Infinity
+        },
+        "Gen_VolumeAnomaly": {
+          "count": 4836,
+          "mean": -2.938555565591812e-18,
+          "std": 1.3618816506112088,
+          "min": -3.699787629995831,
+          "max": 6.257090533743168,
+          "range": 9.956878163738999,
+          "cv": Infinity
+        },
+        "Agent_MACD": {
+          "count": 4836,
+          "mean": -8.815666696775438e-18,
+          "std": 1.0495032070364607,
+          "min": -3.6445486131741727,
+          "max": 4.17357458056124,
+          "range": 7.818123193735413,
+          "cv": Infinity
+        },
+        "GFN_Volatility": {
+          "count": 4836,
+          "mean": 8.815666696775438e-18,
+          "std": 0.9596870500626428,
+          "min": -3.575245237431226,
+          "max": 2.85646503274313,
+          "range": 6.4317102701743565,
+          "cv": Infinity
+        },
+        "Genetic_Composite": {
+          "count": 4836,
+          "mean": 1.1754222262367249e-17,
+          "std": 0.8527691689322279,
+          "min": -2.5168988138777,
+          "max": 3.4464285500628105,
+          "range": 5.963327363940511,
+          "cv": Infinity
+        },
+        "GFN_LogPrice": {
+          "count": 4836,
+          "mean": 5.877111131183624e-18,
+          "std": 0.6867551209526102,
+          "min": -2.6652792879422424,
+          "max": 2.6006562961143995,
+          "range": 5.265935584056642,
+          "cv": Infinity
+        },
+        "Genetic_Multivariate": {
+          "count": 4836,
+          "mean": 7.346388913979529e-18,
+          "std": 0.5879411491064669,
+          "min": -2.5270265310062068,
+          "max": 2.413924227152003,
+          "range": 4.94095075815821,
+          "cv": Infinity
+        },
+        "Gen_PriceAcceleration": {
+          "count": 4836,
+          "mean": -5.877111131183624e-18,
+          "std": 0.5194864608223353,
+          "min": -2.5117886517384025,
+          "max": 2.8158216065522,
+          "range": 5.327610258290603,
+          "cv": Infinity
+        },
+        "Miner_SMACross": {
+          "count": 4836,
+          "mean": 5.877111131183624e-18,
+          "std": 0.4559653950481777,
+          "min": -2.067173397401008,
+          "max": 1.963425809072125,
+          "range": 4.030599206473133,
+          "cv": Infinity
+        }
+      },
+      "factor_quality": {
+        "Agent_MomentumReversal": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": true,
+          "range_score": 0.7
+        },
+        "GFN_Momentum": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": true,
+          "range_score": 0.7
+        },
+        "Gen_VolumeAnomaly": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.8
+        },
+        "Agent_MACD": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "GFN_Volatility": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Genetic_Composite": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "GFN_LogPrice": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Genetic_Multivariate": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 1.0
+        },
+        "Gen_PriceAcceleration": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Miner_SMACross": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 1.0
+        }
+      },
+      "selected_factors": [
+        "Agent_MomentumReversal",
+        "GFN_Momentum",
+        "Gen_VolumeAnomaly",
+        "Agent_MACD",
+        "GFN_Volatility",
+        "Genetic_Composite",
+        "GFN_LogPrice",
+        "Genetic_Multivariate",
+        "Gen_PriceAcceleration",
+        "Miner_SMACross"
+      ]
+    },
+    "crypto": {
+      "factor_statistics": {
+        "GFN_Crypto_Composite": {
+          "count": 6290,
+          "mean": -1.8074219033643248e-17,
+          "std": 2.669195745330708,
+          "min": -7.228861951589841,
+          "max": 7.996476049107982,
+          "range": 15.225338000697823,
+          "cv": Infinity
+        },
+        "Agent_Crypto_MomentumReversal": {
+          "count": 6290,
+          "mean": 1.2426025585629733e-17,
+          "std": 1.4580454113063432,
+          "min": -3.637132811510721,
+          "max": 4.994314295037716,
+          "range": 8.631447106548437,
+          "cv": Infinity
+        },
+        "GFN_Crypto_Momentum": {
+          "count": 6290,
+          "mean": 9.037109516821624e-18,
+          "std": 1.408664430764652,
+          "min": -4.842414316413952,
+          "max": 5.156633515560963,
+          "range": 9.999047831974915,
+          "cv": Infinity
+        },
+        "Gen_Crypto_VolumeAnomaly": {
+          "count": 6290,
+          "mean": -2.7111328550464875e-17,
+          "std": 0.9914898252982592,
+          "min": -3.2818595789559195,
+          "max": 3.8704383704532095,
+          "range": 7.152297949409129,
+          "cv": Infinity
+        },
+        "GFN_Crypto_LogPrice": {
+          "count": 6290,
+          "mean": 0.0,
+          "std": 0.9525805521807698,
+          "min": -3.6981159460050574,
+          "max": 4.586289143847552,
+          "range": 8.28440508985261,
+          "cv": Infinity
+        },
+        "Genetic_Crypto_Multivariate": {
+          "count": 6290,
+          "mean": -1.8074219033643248e-17,
+          "std": 0.6899870673743822,
+          "min": -2.6151864576797488,
+          "max": 2.958860041548651,
+          "range": 5.5740464992284,
+          "cv": Infinity
+        },
+        "Miner_Crypto_SMACross": {
+          "count": 6290,
+          "mean": 2.259277379205406e-18,
+          "std": 0.6355625385835244,
+          "min": -2.504943000590345,
+          "max": 2.79643673482435,
+          "range": 5.301379735414695,
+          "cv": Infinity
+        },
+        "Gen_Crypto_PriceAcceleration": {
+          "count": 6290,
+          "mean": 7.34265148241757e-18,
+          "std": 0.5505307437372237,
+          "min": -2.732485473214929,
+          "max": 2.685782360651046,
+          "range": 5.4182678338659755,
+          "cv": Infinity
+        },
+        "Agent_Crypto_MACD": {
+          "count": 6290,
+          "mean": 6.2130127928148674e-18,
+          "std": 0.5224136632636827,
+          "min": -1.9461330149305656,
+          "max": 1.879182638942512,
+          "range": 3.8253156538730773,
+          "cv": Infinity
+        },
+        "Genetic_Crypto_Composite": {
+          "count": 6290,
+          "mean": 9.037109516821624e-18,
+          "std": 0.3967793917551484,
+          "min": -3.021701139027009,
+          "max": 2.9659241693607865,
+          "range": 5.987625308387796,
+          "cv": Infinity
+        }
+      },
+      "factor_quality": {
+        "GFN_Crypto_Composite": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": true,
+          "range_score": 0.7
+        },
+        "Agent_Crypto_MomentumReversal": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.8
+        },
+        "GFN_Crypto_Momentum": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.8
+        },
+        "Gen_Crypto_VolumeAnomaly": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "GFN_Crypto_LogPrice": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.8
+        },
+        "Genetic_Crypto_Multivariate": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Miner_Crypto_SMACross": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Gen_Crypto_PriceAcceleration": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Agent_Crypto_MACD": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 1.0
+        },
+        "Genetic_Crypto_Composite": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        }
+      },
+      "selected_factors": [
+        "GFN_Crypto_Composite",
+        "Agent_Crypto_MomentumReversal",
+        "GFN_Crypto_Momentum",
+        "Gen_Crypto_VolumeAnomaly",
+        "GFN_Crypto_LogPrice",
+        "Genetic_Crypto_Multivariate",
+        "Miner_Crypto_SMACross",
+        "Gen_Crypto_PriceAcceleration",
+        "Agent_Crypto_MACD",
+        "Genetic_Crypto_Composite"
+      ]
+    },
+    "us": {
+      "factor_statistics": {
+        "GFN_Composite": {
+          "count": 2502,
+          "mean": 4.5438384381141504e-17,
+          "std": 2.503292006731629,
+          "min": -7.779716174534835,
+          "max": 6.342811389477861,
+          "range": 14.122527564012696,
+          "cv": Infinity
+        },
+        "Agent_MomentumReversal": {
+          "count": 2502,
+          "mean": -2.271919219057075e-17,
+          "std": 1.497548709255062,
+          "min": -3.952351491576968,
+          "max": 5.0121837743557895,
+          "range": 8.964535265932758,
+          "cv": Infinity
+        },
+        "GFN_Momentum": {
+          "count": 2502,
+          "mean": 1.1359596095285374e-17,
+          "std": 1.3992407742119215,
+          "min": -3.072593727189264,
+          "max": 5.746032104683152,
+          "range": 8.818625831872417,
+          "cv": Infinity
+        },
+        "GFN_Volatility": {
+          "count": 2502,
+          "mean": -1.7039394142928058e-17,
+          "std": 1.0069698997313152,
+          "min": -3.231015930244566,
+          "max": 3.2747568842337618,
+          "range": 6.505772814478328,
+          "cv": Infinity
+        },
+        "Gen_VolumeAnomaly": {
+          "count": 2502,
+          "mean": 1.7039394142928058e-17,
+          "std": 0.9549627526132554,
+          "min": -2.442319661509726,
+          "max": 3.0963429626761294,
+          "range": 5.538662624185855,
+          "cv": Infinity
+        },
+        "Genetic_Composite": {
+          "count": 2502,
+          "mean": 2.271919219057075e-17,
+          "std": 0.903716769755705,
+          "min": -2.910048888155876,
+          "max": 3.136982983570118,
+          "range": 6.047031871725994,
+          "cv": Infinity
+        },
+        "Gen_PriceAcceleration": {
+          "count": 2502,
+          "mean": 5.679798047642687e-18,
+          "std": 0.7318345662571945,
+          "min": -2.938520933919164,
+          "max": 1.961161216811354,
+          "range": 4.899682150730518,
+          "cv": Infinity
+        },
+        "Genetic_Multivariate": {
+          "count": 2502,
+          "mean": 0.0,
+          "std": 0.5975563869157946,
+          "min": -2.677348874882284,
+          "max": 1.9753214622342357,
+          "range": 4.652670337116519,
+          "cv": Infinity
+        },
+        "GFN_LogPrice": {
+          "count": 2502,
+          "mean": 0.0,
+          "std": 0.5056201141131286,
+          "min": -2.0065782724418018,
+          "max": 1.9979461735642927,
+          "range": 4.004524446006094,
+          "cv": Infinity
+        },
+        "Miner_SMACross": {
+          "count": 2502,
+          "mean": -1.1359596095285374e-17,
+          "std": 0.4798863463629233,
+          "min": -2.4642856271296014,
+          "max": 2.458447518202211,
+          "range": 4.922733145331812,
+          "cv": Infinity
+        }
+      },
+      "factor_quality": {
+        "GFN_Composite": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": true,
+          "range_score": 0.7
+        },
+        "Agent_MomentumReversal": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.8
+        },
+        "GFN_Momentum": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.8
+        },
+        "GFN_Volatility": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Gen_VolumeAnomaly": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Genetic_Composite": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 0.9
+        },
+        "Gen_PriceAcceleration": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 1.0
+        },
+        "Genetic_Multivariate": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 1.0
+        },
+        "GFN_LogPrice": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 1.0
+        },
+        "Miner_SMACross": {
+          "stability_score": 0.0,
+          "distribution_score": 1.0,
+          "overall_quality": 0.6666666666666666,
+          "is_outlier_prone": true,
+          "is_extreme_range": false,
+          "range_score": 1.0
+        }
+      },
+      "selected_factors": [
+        "GFN_Composite",
+        "Agent_MomentumReversal",
+        "GFN_Momentum",
+        "GFN_Volatility",
+        "Gen_VolumeAnomaly",
+        "Genetic_Composite",
+        "Gen_PriceAcceleration",
+        "Genetic_Multivariate",
+        "GFN_LogPrice",
+        "Miner_SMACross"
+      ]
+    }
+  },
+  "portfolio_optimization": {
+    "a_share": {
+      "max_sharpe": {
+        "expected_return": 1.2075164967448604,
+        "volatility": 2.770561214950728,
+        "sharpe_ratio": 0.4358382302577404,
+        "factor_count": 8
+      },
+      "min_volatility": {
+        "expected_return": 0.4986155786133638,
+        "volatility": 1.9748135333847496,
+        "sharpe_ratio": 0.2524874223232393,
+        "factor_count": 8
+      },
+      "efficient_return": {
+        "expected_return": 0.4986155786133638,
+        "volatility": 1.9748135333847496,
+        "sharpe_ratio": 0.2524874223232393,
+        "factor_count": 8
+      },
+      "hrp": {
+        "expected_return": 0.610261017925405,
+        "volatility": 0.0999583522842924,
+        "sharpe_ratio": 6.105152835950679,
+        "factor_count": 8
+      },
+      "cla": {
+        "expected_return": 1.207449639364623,
+        "volatility": 2.770226017109697,
+        "sharpe_ratio": 0.4358668324920327,
+        "factor_count": 8
+      }
+    },
+    "crypto": {
+      "max_sharpe": {
+        "expected_return": 0.1605130894526492,
+        "volatility": 5.5973201360005485,
+        "sharpe_ratio": 0.0286767748766538,
+        "factor_count": 8
+      },
+      "min_volatility": {
+        "expected_return": -0.1641306574777712,
+        "volatility": 2.7016232198273067,
+        "sharpe_ratio": -0.0607526083849186,
+        "factor_count": 8
+      },
+      "efficient_return": {
+        "expected_return": 0.0999999999999999,
+        "volatility": 4.006282411046388,
+        "sharpe_ratio": 0.024960796504079,
+        "factor_count": 8
+      },
+      "hrp": {
+        "expected_return": 0.4208898277867429,
+        "volatility": 0.088771943662255,
+        "sharpe_ratio": 4.741248309128788,
+        "factor_count": 8
+      },
+      "cla": {
+        "expected_return": 0.1604785916834261,
+        "volatility": 5.596116977479521,
+        "sharpe_ratio": 0.0286767757588415,
+        "factor_count": 8
+      }
+    },
+    "us": {
+      "max_sharpe": {
+        "expected_return": 0.9729932452403048,
+        "volatility": 4.355367953634481,
+        "sharpe_ratio": 0.2234009286008449,
+        "factor_count": 8
+      },
+      "min_volatility": {
+        "expected_return": 0.4726042301618747,
+        "volatility": 3.2685209279129745,
+        "sharpe_ratio": 0.1445926890434944,
+        "factor_count": 8
+      },
+      "efficient_return": {
+        "expected_return": 0.4726042301618747,
+        "volatility": 3.2685209279129745,
+        "sharpe_ratio": 0.1445926890434944,
+        "factor_count": 8
+      },
+      "hrp": {
+        "expected_return": 0.4316924502752138,
+        "volatility": 0.0873193126168153,
+        "sharpe_ratio": 4.9438370199914,
+        "factor_count": 8
+      },
+      "cla": {
+        "expected_return": 0.9743557568906543,
+        "volatility": 4.361412252561834,
+        "sharpe_ratio": 0.2234037280741647,
+        "factor_count": 8
+      }
+    }
+  },
+  "factor_categories": {
+    "Agent-Alpha": {
+      "description": "AI增强型因子",
+      "factors": [
+        "Agent_MomentumReversal",
+        "Agent_MACD",
+        "Agent_Crypto_MomentumReversal",
+        "Agent_Crypto_MACD"
+      ],
+      "methodology": "使用机器学习算法生成"
+    },
+    "GFN-Alpha": {
+      "description": "生成式金融网络因子",
+      "factors": [
+        "GFN_Volatility",
+        "GFN_LogPrice",
+        "GFN_Momentum",
+        "GFN_Crypto_Composite",
+        "GFN_Crypto_Momentum",
+        "GFN_Crypto_LogPrice",
+        "GFN_Composite"
+      ],
+      "methodology": "基于生成对抗网络"
+    },
+    "Genetic-Alpha": {
+      "description": "遗传编程符号回归",
+      "factors": [
+        "Genetic_Composite",
+        "Genetic_Multivariate",
+        "Genetic_Crypto_Multivariate",
+        "Genetic_Crypto_Composite"
+      ],
+      "methodology": "遗传算法优化因子表达式"
+    },
+    "Traditional": {
+      "description": "传统技术分析指标",
+      "factors": [
+        "Gen_VolumeAnomaly",
+        "Gen_PriceAcceleration",
+        "Miner_SMACross",
+        "Gen_Crypto_VolumeAnomaly",
+        "Gen_Crypto_PriceAcceleration",
+        "Miner_Crypto_SMACross"
+      ],
+      "methodology": "基于传统技术分析指标"
+    }
+  },
+  "key_insights": {
+    "best_performing_market": "a_share",
+    "most_stable_factors": [
+      [
+        "a_share_Agent_MomentumReversal",
+        0.6666666666666666
+      ],
+      [
+        "a_share_GFN_Momentum",
+        0.6666666666666666
+      ],
+      [
+        "a_share_Gen_VolumeAnomaly",
+        0.6666666666666666
+      ],
+      [
+        "a_share_Agent_MACD",
+        0.6666666666666666
+      ],
+      [
+        "a_share_GFN_Volatility",
+        0.6666666666666666
+      ]
+    ],
+    "highest_sharpe_method": "hrp",
+    "risk_return_tradeoff": "HRP方法在所有市场都表现出最高的夏普比率",
+    "factor_diversity": "五个不同的因子生成方法提供了良好的因子多样性"
+  }
+}

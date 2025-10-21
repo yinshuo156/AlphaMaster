@@ -1,0 +1,381 @@
+{
+  "title": "所有因子表达式汇总",
+  "generated_at": "2025-10-21",
+  "total_factors": 47,
+  "sources": [
+    {
+      "source_name": "AlphaAgent",
+      "file_path": "c:\\Users\\Administrator\\Desktop\\alpha-master\\a_factor_generate\\a_agent_factors_expressions.json",
+      "factor_count": 5,
+      "factors": [
+        {
+          "name": "factor_momentum",
+          "display_name": "动量因子",
+          "expression": "data['close'].pct_change(window).fillna(0)",
+          "description": "衡量股票过去一段时间的价格趋势强度，基于A股市场存在显著的中期动量效应（通常1-3个月）。",
+          "parameters": {"window": 20},
+          "full_expression": "import numpy as np\nreturn data['close'].pct_change(window).fillna(0)"
+        },
+        {
+          "name": "factor_risk_adj_momentum",
+          "display_name": "风险调整动量因子",
+          "expression": "log_ret.rolling(window).sum() / (log_ret.rolling(window).std() * np.sqrt(252))",
+          "description": "将价格动量除以波动率，识别\"高收益低波动\"的优质趋势股。",
+          "parameters": {"window": 60},
+          "full_expression": "import numpy as np\n# 计算对数收益率\nlog_ret = np.log(data['close'] / data['close'].shift(1))\n# 年化动量（60日累计对数收益）\nmomentum = log_ret.rolling(window).sum()\n# 年化波动率（60日标准差 * sqrt(252)）\nvolatility = log_ret.rolling(window).std() * np.sqrt(252)\n# 避免除零，对极小波动率设下限\nvolatility = volatility.replace(0, np.nan).fillna(volatility.mean())\n# 风险调整后动量\nra_momentum = momentum / volatility\nreturn ra_momentum.fillna(0)"
+        },
+        {
+          "name": "factor_volume_price_deviation",
+          "display_name": "成交量加权价格偏离因子",
+          "expression": "((vwap - price_ma) * data['volume']).rolling(window).mean()",
+          "description": "捕捉资金主动买入推动下的价格突破行为。",
+          "parameters": {"window": 10},
+          "full_expression": "import numpy as np\n# 简单VWAP估计（假设日内均匀交易）\ntypical_price = (data['high'] + data['low'] + data['close']) / 3\nvwap = (typical_price * data['volume']).rolling(window).sum() / data['volume'].rolling(window).sum()\n# 价格移动平均\nprice_ma = data['close'].rolling(window).mean()\n# 偏离度乘以成交量进行放大\ndeviation = (vwap - price_ma) * data['volume']\n# 取过去window日均值作为因子值\nfactor = deviation.rolling(window).mean()\nreturn factor.fillna(0)"
+        },
+        {
+          "name": "factor_high_low_breakout",
+          "display_name": "价格区间突破因子",
+          "expression": "(price_position - mean_pp) / std_pp.where(std_pp != 0, 1e-6)",
+          "description": "衡量当前价格相对于过去N日最高价和最低价的位置。",
+          "parameters": {"window": 20},
+          "full_expression": "import numpy as np\n# 构造价格位置：(当前价 - 最低价)/(最高价 - 最低价)\nrolling_high = data['high'].rolling(window).max()\nrolling_low = data['low'].rolling(window).min()\ndenominator = rolling_high - rolling_low\ndenominator = denominator.replace(0, np.nan).fillna(1e-6)  # 防止除零\nprice_position = (data['close'] - rolling_low) / denominator\n\n# Z-score标准化以跨股票比较\nmean_pp = price_position.rolling(window).mean()\nstd_pp = price_position.rolling(window).std()\nz_score = (price_position - mean_pp) / std_pp.where(std_pp != 0, 1e-6)\n\nreturn z_score.fillna(0)"
+        },
+        {
+          "name": "factor_turnover_volatility",
+          "display_name": "换手率变异系数因子",
+          "expression": "-rolling_std / rolling_mean.where(rolling_mean != 0, 1e-6)",
+          "description": "衡量个股流动性的稳定性。",
+          "parameters": {"window": 30},
+          "full_expression": "import numpy as np\nvol_series = data['volume']\nrolling_mean = vol_series.rolling(window).mean()\nrolling_std = vol_series.rolling(window).std()\n# 防止除零\nturnover_cv = rolling_std / rolling_mean.where(rolling_mean != 0, 1e-6)\n# 取负值：流动性稳定的股票得分更高\nreturn (-turnover_cv).fillna(0)"
+        }
+      ]
+    },
+    {
+      "source_name": "AlphaGen",
+      "file_path": "c:\\Users\\Administrator\\Desktop\\alpha-master\\a_factor_generate\\a_gen_factors_expressions.json",
+      "factor_count": 10,
+      "factors": [
+        {
+          "id": 1,
+          "name": "factor_1.py",
+          "expression": "Max(Feature(OPEN), 10)",
+          "weight": 0.000477838220578297,
+          "ic": 0.007911180146038532,
+          "description": "开盘价与10的最大值"
+        },
+        {
+          "id": 2,
+          "name": "factor_2.py",
+          "expression": "Mean(Feature(CLOSE), 120)",
+          "weight": -0.003040771376048978,
+          "ic": 0.0006170635460875928,
+          "description": "收盘价的120日平均值"
+        },
+        {
+          "id": 3,
+          "name": "factor_3.py",
+          "expression": "Abs(Sub(Mean(Feature(OPEN), 5), Mean(Feature(LOW), 10)))",
+          "weight": 0.008512829597587349,
+          "ic": 0.005891994573175907,
+          "description": "5日开盘价均值与10日最低价均值差的绝对值"
+        },
+        {
+          "id": 4,
+          "name": "factor_4.py",
+          "expression": "Sum(Feature(VOLUME), 50)",
+          "weight": 0.0004618199683381631,
+          "ic": 0.005442606285214424,
+          "description": "50日成交量总和"
+        },
+        {
+          "id": 5,
+          "name": "factor_5.py",
+          "expression": "Mul(Sum(Feature(CLOSE), 5), Max(Feature(CLOSE), 10))",
+          "weight": 0.00047783822057829653,
+          "ic": 0.007911180146038532,
+          "description": "5日收盘价总和乘以收盘价与10的最大值"
+        },
+        {
+          "id": 6,
+          "name": "factor_6.py",
+          "expression": "Div(Std(Feature(HIGH), 20), Std(Feature(HIGH), 5))",
+          "weight": 0.012276254835682766,
+          "ic": 0.013793782331049442,
+          "description": "20日最高价标准差与5日最高价标准差的比值"
+        },
+        {
+          "id": 7,
+          "name": "factor_7.py",
+          "expression": "Max(Feature(LOW), 20)",
+          "weight": 0.00047783822057830087,
+          "ic": 0.007911180146038532,
+          "description": "最低价与20的最大值"
+        },
+        {
+          "id": 8,
+          "name": "factor_8.py",
+          "expression": "Mul(Mean(Feature(VOLUME), 120), Min(Feature(VOLUME), 5))",
+          "weight": -0.005737920050147864,
+          "ic": -0.00629480741918087,
+          "description": "120日平均成交量乘以成交量与5的最小值"
+        },
+        {
+          "id": 9,
+          "name": "factor_9.py",
+          "expression": "Abs(Div(Sum(Feature(OPEN), 120), Max(Feature(HIGH), 10)))",
+          "weight": 0.0004778382205782992,
+          "ic": 0.007911180146038532,
+          "description": "120日开盘价总和除以最高价与10的最大值的绝对值"
+        },
+        {
+          "id": 10,
+          "name": "factor_10.py",
+          "expression": "Add(Mean(Feature(CLOSE), 5), Std(Feature(CLOSE), 50))",
+          "weight": -0.0030407713760491934,
+          "ic": 0.0006170635460875928,
+          "description": "5日收盘价均值加上50日收盘价标准差"
+        }
+      ]
+    },
+    {
+      "source_name": "Alpha-GFN",
+      "file_path": "c:\\Users\\Administrator\\Desktop\\alpha-master\\a_factor_generate\\a_gfn_factors_expressions.json",
+      "factor_count": 10,
+      "factors": [
+        {
+          "name": "alpha_gfn_factor_1",
+          "expression": "ops_log(ops_subtract($open, $close))",
+          "description": "Alpha-GFN自动生成的技术因子 1",
+          "formatted_expression": "log(open - close)"
+        },
+        {
+          "name": "alpha_gfn_factor_2",
+          "expression": "ops_abs(ops_add($low, $close))",
+          "description": "Alpha-GFN自动生成的技术因子 2",
+          "formatted_expression": "abs(low + close)"
+        },
+        {
+          "name": "alpha_gfn_factor_3",
+          "expression": "ops_abs(ops_add($open, $volume))",
+          "description": "Alpha-GFN自动生成的技术因子 3",
+          "formatted_expression": "abs(open + volume)"
+        },
+        {
+          "name": "alpha_gfn_factor_4",
+          "expression": "ops_log(ops_add($high, $open))",
+          "description": "Alpha-GFN自动生成的技术因子 4",
+          "formatted_expression": "log(high + open)"
+        },
+        {
+          "name": "alpha_gfn_factor_5",
+          "expression": "ops_abs(ops_divide($high, $low))",
+          "description": "Alpha-GFN自动生成的技术因子 5",
+          "formatted_expression": "abs(high / low)"
+        },
+        {
+          "name": "alpha_gfn_factor_6",
+          "expression": "ops_log(ops_divide($close, $open))",
+          "description": "Alpha-GFN自动生成的技术因子 6",
+          "formatted_expression": "log(close / open)"
+        },
+        {
+          "name": "alpha_gfn_factor_7",
+          "expression": "ops_abs(ops_subtract($close, $open))",
+          "description": "Alpha-GFN自动生成的技术因子 7",
+          "formatted_expression": "abs(close - open)"
+        },
+        {
+          "name": "alpha_gfn_factor_8",
+          "expression": "ops_abs(ops_subtract($high, $open))",
+          "description": "Alpha-GFN自动生成的技术因子 8",
+          "formatted_expression": "abs(high - open)"
+        },
+        {
+          "name": "alpha_gfn_factor_9",
+          "expression": "ops_log(ops_subtract($close, $high))",
+          "description": "Alpha-GFN自动生成的技术因子 9",
+          "formatted_expression": "log(close - high)"
+        },
+        {
+          "name": "alpha_gfn_factor_10",
+          "expression": "ops_abs(ops_multiply($open, $volume))",
+          "description": "Alpha-GFN自动生成的技术因子 10",
+          "formatted_expression": "abs(open * volume)"
+        }
+      ]
+    },
+    {
+      "source_name": "AlphaMiner",
+      "file_path": "c:\\Users\\Administrator\\Desktop\\alpha-master\\a_factor_generate\\a_miner\\alphaminer_factors_expressions.json",
+      "factor_count": 12,
+      "factors": [
+        {
+          "name": "adaptive_vol_20d_mom5d",
+          "description": "自适应波动率动量过滤策略",
+          "expression": "AlphaMiner原生接口: AdaptiveVolatilityAlpha(vol_window=20, mom_window=5).calculate(returns_data)",
+          "implementation": "动量 * (1-波动率百分位数)",
+          "parameters": {
+            "vol_window": 20,
+            "mom_window": 5
+          }
+        },
+        {
+          "name": "bollinger_bands_20d_std2.0",
+          "description": "布林带均值回归策略",
+          "expression": "AlphaMiner原生接口: BollingerBandsAlpha(window=20, std_dev=2.0).calculate(returns_data)",
+          "implementation": "(收盘价-下轨)/(上轨-下轨)并转换为均值回归信号",
+          "parameters": {
+            "window": 20,
+            "std_dev": 2.0
+          }
+        },
+        {
+          "name": "correlation_alpha_60d",
+          "description": "低市场相关性Alpha",
+          "expression": "AlphaMiner原生接口: CorrelationAlpha(window=60).calculate(returns_data)",
+          "implementation": "计算个股与市场的相关性",
+          "parameters": {
+            "window": 60
+          }
+        },
+        {
+          "name": "cross_sectional_momentum_30d",
+          "description": "横截面动量因子",
+          "expression": "AlphaMiner原生接口: CrossSectionalMomentum(lookback_days=30).calculate(returns_data)",
+          "implementation": "计算每个日期的收益率排名",
+          "parameters": {
+            "lookback_days": 30
+          }
+        },
+        {
+          "name": "momentum_60d_skip5d",
+          "description": "60日动量因子（跳过最近5天）",
+          "expression": "AlphaMiner原生接口: MomentumAlpha(lookback_days=60, skip_days=5).calculate(returns_data)",
+          "implementation": "计算60日收益率，跳过最近5天",
+          "parameters": {
+            "lookback_days": 60,
+            "skip_days": 5
+          }
+        },
+        {
+          "name": "rank_alpha_30d",
+          "description": "排名策略",
+          "expression": "AlphaMiner原生接口: RankAlpha(window=30).calculate(returns_data)",
+          "implementation": "对价格排序",
+          "parameters": {
+            "window": 30
+          }
+        },
+        {
+          "name": "rsi_alpha_14d",
+          "description": "RSI均值回归策略",
+          "expression": "AlphaMiner原生接口: RSIAlpha(window=14).calculate(returns_data)",
+          "implementation": "计算14日RSI并转换为50-RSI的均值回归信号",
+          "parameters": {
+            "window": 14
+          }
+        },
+        {
+          "name": "short_term_reversal_5d",
+          "description": "5日短期反转因子",
+          "expression": "AlphaMiner原生接口: ShortTermReversal(lookback_days=5).calculate(returns_data)",
+          "implementation": "计算5日收益率的负值",
+          "parameters": {
+            "lookback_days": 5
+          }
+        },
+        {
+          "name": "trend_strength_5d_20d",
+          "description": "趋势强度因子：5日和20日均线收敛/发散",
+          "expression": "AlphaMiner原生接口: TrendStrengthAlpha(short_window=5, long_window=20).calculate(returns_data)",
+          "implementation": "计算均线差值相对于价格的比例",
+          "parameters": {
+            "short_window": 5,
+            "long_window": 20
+          }
+        },
+        {
+          "name": "vol_adj_momentum_60d_vol30d",
+          "description": "波动率调整动量因子",
+          "expression": "AlphaMiner原生接口: VolatilityAdjustedMomentum(lookback_days=60, vol_window=30).calculate(returns_data)",
+          "implementation": "动量除以波动率",
+          "parameters": {
+            "lookback_days": 60,
+            "vol_window": 30
+          }
+        },
+        {
+          "name": "volatility_alpha_30d_target0.020",
+          "description": "目标波动率策略",
+          "expression": "AlphaMiner原生接口: VolatilityAlpha(window=30, target_vol=0.02).calculate(returns_data)",
+          "implementation": "计算波动率偏离度",
+          "parameters": {
+            "window": 30,
+            "target_vol": 0.02
+          }
+        },
+        {
+          "name": "zscore_60d_window20d",
+          "description": "(收益率-均值)/标准差",
+          "parameters": {
+            "window": 20
+          }
+        }
+      ]
+    },
+    {
+      "source_name": "Genetic-Alpha",
+      "file_path": "c:\\Users\\Administrator\\Desktop\\alpha-master\\a_factor_generate\\a_genetic\\genetic_factors_20251020_223325.json",
+      "factor_count": 10,
+      "factors": [
+        {
+          "expression": "sqrt(ifcondition_e(close, volume, low, high))",
+          "fitness": -0.006
+        },
+        {
+          "expression": "delta(ts_rank(decay_linear(close, 5.000), 4.000), 2.000)",
+          "fitness": -0.007
+        },
+        {
+          "expression": "ifcondition_e(ts_highday(add(high, low), 3.000), correlation(min(open, high), open, 3.000), close, delay(covariance(open, open, 9.000), 7.000))",
+          "fitness": -0.019
+        },
+        {
+          "expression": "mul(volume, volume)",
+          "fitness": -0.003
+        },
+        {
+          "expression": "ifcondition_ge(close, open, low, high)",
+          "fitness": -0.005
+        },
+        {
+          "expression": "delta(ifcondition_e(indneutral(high), mul(high, close), open, ts_count(high, close, 1.000)), 4.000)",
+          "fitness": -0.013000000000000001
+        },
+        {
+          "expression": "ifcondition_ge(high, open, close, high)",
+          "fitness": -0.005
+        },
+        {
+          "expression": "ts_argmin(ifcondition_e(open, ts_count(high, volume, 7.000), add(volume, close), ts_product(low, 9.000)), 8.000)",
+          "fitness": -0.014
+        },
+        {
+          "expression": "ifcondition_e(div(volume, volume), add(low, volume), min(close, high), add(open, volume))",
+          "fitness": -0.013000000000000001
+        },
+        {
+          "expression": "covariance(ts_lowday(high, 1.000), correlation(high, high, 4.000), 5.000)",
+          "fitness": -0.009000000000000001
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "AlphaAgent": "5个因子，包括动量、风险调整动量、成交量价格偏离等",
+    "AlphaGen": "10个因子，IC最高为0.01379，主要包含统计类因子",
+    "Alpha-GFN": "10个因子，基于GFN生成的技术指标组合",
+    "AlphaMiner": "12个因子，包含动量、均值回归、波动率等多种策略",
+    "Genetic-Alpha": "10个因子，通过遗传算法生成，具有复杂的条件逻辑和时间序列操作"
+  }
+}

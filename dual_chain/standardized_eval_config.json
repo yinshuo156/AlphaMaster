@@ -1,0 +1,10 @@
+{
+    "data-path": "c:/Users/Administrator/Desktop/alpha-master/data/a_share/csi500data",
+    "factors-file": "c:/Users/Administrator/Desktop/alpha-master/a_factor_generate/all_factors_expressions.json",
+    "complementary-count": 3,
+    "llm-provider": "dashscope",
+    "llm-model": "qwen-turbo",
+    "llm-api-key": "sk-429ed6e6cfa347ddb5005e178edd3f90",
+    "run-standardized-eval": true,
+    "mock-mode": true
+}
