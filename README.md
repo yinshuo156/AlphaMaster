@@ -1,141 +1,161 @@
-# Alpha因子生成与评估系统
+# Alpha Factor Discovery and Evaluation System
 
-这是一个完整的量化交易Alpha因子生成、筛选优化和回测评估系统，主要包含三个核心模块：因子生成器、筛选优化器和回测评估器。
+## Overview
 
-## 系统架构
+AlphaMaster is a comprehensive quantitative trading framework for automated alpha factor discovery, optimization, and backtesting evaluation. The system integrates multiple advanced AI paradigms to generate, refine, and validate predictive financial signals across diverse market conditions.
 
-### 1. 因子生成器 (a_factor_generate)
-多种算法并行生成Alpha因子，包括：
-- **a_agent**: 基于智能代理的因子生成
-- **a_gen**: 基础生成器
-- **a_genetic**: 遗传算法生成器
-- **a_gfn**: 基于生成流网络的因子生成
-- **a_miner**: 基于AlphaMiner的因子挖掘
+## System Architecture
 
-### 2. 筛选优化器 (dual_chain)
-采用双链式结构对生成的因子进行筛选和优化：
-- 因子评估：计算IC、IC-IR、分组收益率等指标
-- 因子池管理：维护有效因子池和待评估因子池
-- 迭代优化：持续筛选出最优质的Alpha因子
+### 1. Factor Generator (`a_factor_generate`)
+Multi-algorithm parallel alpha factor generation:
+- **`a_agent`**: Intelligent agent-based factor generation using multi-agent systems
+- **`a_gen`**: Foundational factor generation modules
+- **`a_genetic`**: Evolutionary computation via genetic programming
+- **`a_gfn`**: Generative flow networks for reward-aligned sampling
+- **`a_miner`**: AlphaMiner-based factor discovery pipelines
 
-### 3. 回测评估器 (compare)
-对优化后的因子进行全面的回测和评估：
-- 多因子模型构建
-- 回测策略执行
-- 性能指标计算
-- 可视化报告生成
+### 2. Screening Optimizer (`dual_chain`)
+Dual-chain architecture for systematic factor refinement:
+- **Factor Evaluation**: Computation of IC, IC-IR, quintile returns, and other core metrics
+- **Factor Pool Management**: Maintenance of effective and candidate factor repositories
+- **Iterative Optimization**: Continuous quality enhancement through performance feedback loops
 
-## 目录结构
+### 3. Backtest Evaluator (`compare`)
+Comprehensive performance assessment framework:
+- Multi-factor model construction
+- Strategy backtesting execution
+- Performance metric calculation
+- Visual analytics and reporting
+
+## Experimental Baselines
+
+### Classical Factor Libraries
+- **Alpha 101**: Traditional 101-factor alpha library
+- **Alpha 158**: Extended 158-factor alpha universe
+- **Alpha 360**: Comprehensive 360-factor collection
+
+### Traditional Automated Methods
+- **GP (Genetic Programming)**: Evolutionary expression optimization
+- **DSO (Differentiable Symbolic Optimization)**: Gradient-based symbolic regression
+- **AlphaGen**: Generative model-based factor discovery
+- **AlphaForge**: Dynamic formulatic alpha combination framework
+
+### LLM-Enhanced Approaches
+- **LLM + CoT (Chain of Thought)**: Sequential reasoning-enhanced generation
+- **LLM + ToT (Tree of Thought)**: Multi-path exploratory reasoning
+- **LLM + MCTS (Monte Carlo Tree Search)**: Search-based factor optimization
+
+## Directory Structure
 
 ```
-a_factor_generate/       # 因子生成器
-  ├── a_agent/           # 智能代理因子生成
-  ├── a_gen/             # 基础因子生成
-  ├── a_genetic/         # 遗传算法因子生成
-  ├── a_gfn/             # 生成流网络因子生成
-  └── a_miner/           # AlphaMiner因子挖掘
-dual_chain/              # 筛选优化器
-  ├── dual_chain_manager.py  # 双链管理器
-  ├── factor_evaluator.py    # 因子评估器
-  └── factor_pool.py         # 因子池管理
-compare/                 # 回测评估器
-  ├── alpha_evaluation.py    # 回测评估核心
-  └── alpha_evaluation_report.json  # 评估报告
-data/                    # 数据目录
-  ├── a_share/           # A股数据
-  ├── crypto/            # 加密货币数据
-  └── us/                # 美股数据
-alpha_pool/              # 因子池存储
+a_factor_generate/          # Multi-paradigm factor generation
+  ├── a_agent/              # Agent-based generation
+  ├── a_gen/                # Foundational generators
+  ├── a_genetic/            # Genetic programming
+  ├── a_gfn/                # Generative flow networks
+  └── a_miner/              # AlphaMiner pipelines
+dual_chain/                 # Dual-chain optimization
+  ├── dual_chain_manager.py # Architecture coordination
+  ├── factor_evaluator.py   # Metric computation
+  └── factor_pool.py        # Repository management
+compare/                    # Backtesting & evaluation
+  ├── alpha_evaluation.py   # Performance assessment
+  └── alpha_evaluation_report.json # Analysis outputs
+data/                       # Multi-market datasets
+  ├── a_share/              # Chinese A-shares
+  ├── crypto/               # Cryptocurrency markets
+  └── us/                   # US equities
+alpha_pool/                 # Factor repository storage
 ```
 
-## 核心功能
+## Core Capabilities
 
-### 因子生成器
-- 支持多种因子类型：动量因子、波动率因子、交易量因子、统计因子等
-- 实现多种生成算法：智能代理、遗传算法、生成流网络等
-- 自动保存生成的因子表达式和计算结果
+### Factor Generation
+- **Multi-paradigm Synthesis**: Integration of RL, GFlowNet, LLM, and GP methodologies
+- **Diverse Factor Typologies**: Momentum, volatility, volume, statistical, and composite factors
+- **Automated Expression Management**: Structured storage and retrieval of mathematical formulations
 
-### 筛选优化器
-- **因子评估器 (FactorEvaluator)**: 计算信息系数(IC)、IC信息比率、分组收益率等核心指标
-- **因子池 (FactorPool)**: 管理有效因子和待评估因子
-- **双链管理器 (DualChainManager)**: 协调因子生成、评估和优化的完整流程
+### Screening & Optimization
+- **FactorEvaluator**: Computation of information coefficients, consistency metrics, and efficiency measures
+- **FactorPool**: Dynamic management of factor repositories with quality thresholds
+- **DualChainManager**: Coordinated exploration and exploitation workflows
 
-### 回测评估器
-- **AlphaEvaluationSystem**: 基于LightGBM的多因子模型构建
-- 支持各种性能指标：收益率、夏普比率、最大回撤等
-- 生成可视化报告和评估结果
+### Backtesting & Evaluation
+- **AlphaEvaluationSystem**: LightGBM-based multi-factor modeling
+- **Comprehensive Metrics**: Returns, risk-adjusted performance, drawdown analysis
+- **Automated Reporting**: Visual analytics and performance attribution
 
-## 快速开始
+## Quick Start
 
-### 1. 生成因子
+### 1. Factor Generation
 ```bash
 cd a_factor_generate/a_miner
 python run_alphaminer.py
 ```
 
-### 2. 筛选优化因子
+### 2. Factor Screening & Optimization
 ```bash
 cd ../../dual_chain
 python run_dual_chain.py
 ```
 
-### 3. 回测评估因子
+### 3. Backtesting & Evaluation
 ```bash
 cd ../compare
 python alpha_evaluation.py
 ```
 
-## 关键指标说明
+## Key Performance Metrics
 
-### 因子质量指标
-- **IC (Information Coefficient)**: 因子值与未来收益率的相关系数
-- **IC-IR (Information Ratio)**: IC的均值除以IC的标准差
-- **分组收益**: 将股票按因子值分组后的平均收益率
+### Factor Quality Assessment
+- **IC (Information Coefficient)**: Cross-sectional correlation between factor values and forward returns
+- **IC-IR (IC Information Ratio)**: Risk-adjusted consistency measure of predictive power
+- **Quintile Returns**: Performance stratification across factor-sorted portfolios
 
-### 回测性能指标
-- **收益率**: 策略的累计和日均收益率
-- **夏普比率**: 超额收益除以波动率
-- **最大回撤**: 策略历史最大亏损幅度
-- **胜率**: 盈利交易占总交易的比例
+### Portfolio Performance
+- **Annualized Return**: Compounded strategy performance
+- **Sharpe Ratio**: Excess return per unit of volatility
+- **Maximum Drawdown**: Peak-to-trough capital erosion
+- **Win Rate**: Proportion of profitable periods
 
-## 支持的数据类型
+## Supported Markets
 
-- A股市场 (CSI500, CSI1000)
-- 美股市场
-- 加密货币市场
+- **Chinese A-Shares**: CSI 500, CSI 1000 indices
+- **US Equities**: S&P 500 constituents
+- **Cryptocurrencies**: Major digital assets
 
-## 技术栈
+## Technical Stack
 
-- Python 3.8+
-- pandas, numpy: 数据处理
-- scikit-learn, LightGBM: 机器学习模型
-- matplotlib, seaborn: 数据可视化
-- 各种量化分析库
+- **Python 3.8+**: Core programming language
+- **pandas, numpy**: Data manipulation and numerical computation
+- **scikit-learn, LightGBM**: Machine learning and gradient boosting
+- **matplotlib, seaborn**: Data visualization and analytics
+- **Quantitative Libraries**: Specialized financial computation packages
 
-## 注意事项
+## Important Notes
 
-1. 本系统仅用于研究和回测，不构成投资建议
-2. 因子生成和回测需要大量计算资源
-3. 建议使用虚拟环境安装依赖
+1. **Research Purpose**: This system is designed for academic and research applications only
+2. **Computational Requirements**: Factor discovery and backtesting require substantial computational resources
+3. **Environment Isolation**: Recommended deployment within virtual environments
 
-## 开发指南
+## Development Guide
 
-### 添加自定义因子
-1. 在对应的生成器目录下创建新的因子文件
-2. 实现calculate_factor函数
-3. 在生成器的运行脚本中注册新因子
+### Adding Custom Factors
+1. Create new factor implementation in appropriate generator directory
+2. Implement `calculate_factor` method with proper interfaces
+3. Register factor in generator execution scripts
 
-### 修改评估指标
-1. 编辑dual_chain/factor_evaluator.py
-2. 添加或修改评估方法
-3. 更新评估逻辑
+### Modifying Evaluation Metrics
+1. Edit `dual_chain/factor_evaluator.py`
+2. Implement new assessment methodologies
+3. Update evaluation workflow logic
 
-## 项目维护
+## Maintenance
 
-- 定期更新数据以保持因子的有效性
-- 根据市场变化调整评估参数
-- 持续优化因子生成算法
+- **Data Updates**: Regular refresh of market data to maintain factor validity
+- **Parameter Calibration**: Periodic adjustment of evaluation thresholds based on regime changes
+- **Algorithm Enhancement**: Continuous improvement of generation and optimization methodologies
 
-## 许可证
+## License
 
-本项目仅供研究使用，未经授权不得用于商业用途。
+This project is intended for research purposes only. Commercial use requires explicit authorization.
